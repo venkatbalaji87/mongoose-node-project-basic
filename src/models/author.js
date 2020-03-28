@@ -1,8 +1,8 @@
-const mongoose = require("mangoose");
+const mongoose = require("mongoose");
 
-const { Schema } = mongoose;
+const { Schema, model } = mongoose;
 
-const authorSchema = new Schema({
+const AuthorSchema = new Schema({
   first_name: {
     type: String,
     required: true
@@ -16,5 +16,9 @@ const authorSchema = new Schema({
     enum: ["fiction", "non-fiction"]
   },
   date_of_birth: Date,
-  date_of_death: Date
+  date_of_death: Date,
 });
+
+const Author = model("Author", AuthorSchema);
+
+module.exports = Author;
